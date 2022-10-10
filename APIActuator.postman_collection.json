@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "49d87f66-becc-4748-8b5c-5edd3fa76942",
-		"name": "API Alga-Mensagens",
+		"_postman_id": "f5b6e5ff-7761-45db-8112-284f28b44e7f",
+		"name": "APIActuator",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Mensagens",
+			"name": "Notifications",
 			"item": [
 				{
 					"name": "Listar mensagens",
@@ -141,6 +141,50 @@
 							"port": "3000",
 							"path": [
 								"paises"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actuator",
+			"item": [
+				{
+					"name": "actuator",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/actuator/health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator",
+								"health"
 							]
 						}
 					},
