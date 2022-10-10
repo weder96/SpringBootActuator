@@ -15,3 +15,7 @@ mvn spring-boot:run
 
 ### Postman File
 Importar Collection para postman
+
+### Visualização do Postman
+
+![Postman](https://github.com/weder96/SpringBootActuator/blob/main/documentation/postman_search_actuator.png)
