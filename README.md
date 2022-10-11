@@ -19,3 +19,9 @@ Importar Collection para postman
 ### Visualização do Postman
 
 ![Postman](https://github.com/weder96/SpringBootActuator/blob/main/documentation/postman_search_actuator.png)
+
+### Acessar Spring boot Admin
+
+http://localhost:1111/
+
+[https://codecentric.github.io/spring-boot-admin/2.5.1/#getting-started](https://codecentric.github.io/spring-boot-admin/2.5.1/#getting-started)

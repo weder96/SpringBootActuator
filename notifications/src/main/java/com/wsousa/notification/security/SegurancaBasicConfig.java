@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
@@ -18,6 +19,9 @@ public class SegurancaBasicConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JPAUsuarioDetailsService userDetailsService;
+
+    @Autowired
+    private InMemoryUserDetailsManager inMemoryUserDetailsManager;
     
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -27,6 +31,10 @@ public class SegurancaBasicConfig extends WebSecurityConfigurerAdapter {
         authenticationManagerBuilder
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder);
+
+        authenticationManagerBuilder
+                .userDetailsService(inMemoryUserDetailsManager)
+                .passwordEncoder(passwordEncoder);
     }
 
     @Override
@@ -34,6 +42,8 @@ public class SegurancaBasicConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/mensagens/**","/paises").permitAll()
                 .antMatchers(HttpMethod.POST, "/mensagens").hasAnyRole("CLIENTE","ADMIN")
+                .antMatchers(HttpMethod.GET, "/actuator/health", "/actuator/info").permitAll()
+                .antMatchers("/actuator/**").hasAnyRole("ACTUATOR")
             .and()
                 .csrf().disable()
                 .httpBasic();
